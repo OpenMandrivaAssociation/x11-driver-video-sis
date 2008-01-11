@@ -1,3 +1,5 @@
+%define debug_package	%{nil}
+
 Name: x11-driver-video-sis
 Version: 0.9.4
 Release: %mkrel 2
@@ -15,11 +17,15 @@ License: MIT
 # git-format-patch xf86-video-sis-0.9.4..origin/mandriva+gpl
 Patch1: 0001-Update-for-new-policy-of-hidden-symbols-and-common-m.patch
 ########################################################################
-BuildRequires: libdrm-devel >= 2.0
-BuildRequires: x11-proto-devel >= 1.0.0
-BuildRequires: x11-server-devel >= 1.0.1
-BuildRequires: x11-util-macros >= 1.1.5-4mdk
-BuildRequires: x11-util-modular
+BuildRequires: x11-util-macros		>= 1.1.5-4mdk
+#BuildRequires: gcc			>= 4.2.2
+#BuildRequires: glibc-devel		>= 2.7
+BuildRequires: libdrm-devel		>= 2.3.0
+BuildRequires: libpixman-1-devel	>= 0.9.6
+BuildRequires: x11-proto-devel		>= 7.3
+BuildRequires: libmesagl-devel		>= 7.0.2
+BuildRequires: x11-server-devel		>= 1.4
+
 BuildRequires: GL-devel
 Conflicts: xorg-x11-server < 7.0
 
