@@ -1,8 +1,6 @@
-%define debug_package	%{nil}
-
 Name: x11-driver-video-sis
 Version: 0.9.4
-Release: %mkrel 2
+Release: %mkrel 3
 Summary: The X.org driver for SiS Cards
 Group: System/X11
 URL: http://xorg.freedesktop.org
