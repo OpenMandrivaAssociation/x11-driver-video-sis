@@ -17,7 +17,7 @@ BuildRequires: GL-devel
 Conflicts: xorg-x11-server < 7.0
 
 %description
-The X.org driver for SiS Cards.
+x11-driver-video-sis is the X.org driver for SiS Cards.
 
 %prep
 %setup -q -n xf86-video-sis-%{version}
