@@ -16,11 +16,13 @@ BuildRequires: GL-devel
 
 Conflicts: xorg-x11-server < 7.0
 
+Patch1: 0001-Fix-compilation-with-Werror-format-security.patch
 %description
 x11-driver-video-sis is the X.org driver for SiS Cards.
 
 %prep
 %setup -q -n xf86-video-sis-%{version}
+%patch1 -p1 -b .format-security
 
 %build
 %configure
