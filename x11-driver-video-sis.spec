@@ -25,7 +25,7 @@ x11-driver-video-sis is the X.org driver for SiS Cards.
 %patch1 -p1 -b .format-security
 
 %build
-%configure
+%configure2_5x
 %make
 
 %install
