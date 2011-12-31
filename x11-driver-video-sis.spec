@@ -1,30 +1,29 @@
 Name: x11-driver-video-sis
 Version: 0.10.3
-Release: %mkrel 6
+Release: 7
 Summary: X.org driver for SiS Cards
 Group: System/X11
+License: MIT
 URL: http://xorg.freedesktop.org
 Source: http://xorg.freedesktop.org/releases/individual/driver/xf86-video-sis-%{version}.tar.bz2
-License: MIT
-BuildRoot: %{_tmppath}/%{name}-root
+Patch1: 0001-Fix-compilation-with-Werror-format-security.patch
  
 BuildRequires: libdrm-devel >= 2.0
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-server-devel >= 1.0.1
 BuildRequires: x11-util-macros >= 1.0.1
-BuildRequires: GL-devel
+BuildRequires: pkgconfig(gl)
 
 Requires: x11-server-common %(xserver-sdk-abi-requires videodrv)
 
 Conflicts: xorg-x11-server < 7.0
 
-Patch1: 0001-Fix-compilation-with-Werror-format-security.patch
 %description
 x11-driver-video-sis is the X.org driver for SiS Cards.
 
 %prep
-%setup -q -n xf86-video-sis-%{version}
-%patch1 -p1 -b .format-security
+%setup -qn xf86-video-sis-%{version}
+%apply_patches
 
 %build
 %configure2_5x
@@ -33,12 +32,9 @@ x11-driver-video-sis is the X.org driver for SiS Cards.
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%clean
-rm -rf %{buildroot}
+find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 %files
-%defattr(-,root,root)
-%{_libdir}/xorg/modules/drivers/sis_drv.la
 %{_libdir}/xorg/modules/drivers/sis_drv.so
 %{_mandir}/man4/sis.*
+
