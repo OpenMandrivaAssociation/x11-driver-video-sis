@@ -1,11 +1,11 @@
 Name: x11-driver-video-sis
-Version: 0.10.3
-Release: 7
+Version: 0.10.4
+Release: 1
 Summary: X.org driver for SiS Cards
 Group: System/X11
 License: MIT
 URL: http://xorg.freedesktop.org
-Source: http://xorg.freedesktop.org/releases/individual/driver/xf86-video-sis-%{version}.tar.bz2
+Source0: http://xorg.freedesktop.org/releases/individual/driver/xf86-video-sis-%{version}.tar.bz2
 Patch1: 0001-Fix-compilation-with-Werror-format-security.patch
  
 BuildRequires: libdrm-devel >= 2.0
