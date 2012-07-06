@@ -1,6 +1,6 @@
 Name: x11-driver-video-sis
-Version: 0.10.4
-Release: 2
+Version: 0.10.6
+Release: 1
 Summary: X.org driver for SiS Cards
 Group: System/X11
 License: MIT
