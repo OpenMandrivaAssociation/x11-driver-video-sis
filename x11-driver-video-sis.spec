@@ -3,7 +3,7 @@
 Summary:	X.org driver for SiS Cards
 Name:		x11-driver-video-sis
 Version:	0.10.7
-Release:	10
+Release:	11
 Group:		System/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
@@ -13,6 +13,7 @@ Patch1:		0001-Fix-compilation-with-Werror-format-security.patch
 Patch2:		0001-Replace-xf86UnMapVidMem-with-pci_device_unmap_range.diff
 # archlinux
 Patch3:		Xi.patch
+Patch4:		0001-Disable-UploadToScreen-and-DownloadFromScreen.patch
 
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(libdrm)
@@ -29,7 +30,10 @@ x11-driver-video-sis is the X.org driver for SiS Cards.
 %apply_patches
 
 %build
-%configure2_5x
+# For reasons currently unknown, X drivers tend to crash Xorg if built with clang
+export CC=gcc
+export CXX=g++
+%configure
 %make
 
 %install
