@@ -12,9 +12,10 @@ Patch0:		remove_mibstore_h.patch
 Patch1:		0001-Fix-compilation-with-Werror-format-security.patch
 Patch2:		0001-Replace-xf86UnMapVidMem-with-pci_device_unmap_range.diff
 # archlinux
-Patch3:		Xi.patch
+Patch3:		u_Fixed-build-with-INPUT_API-19.patch
 Patch4:		0001-Disable-UploadToScreen-and-DownloadFromScreen.patch
-
+Patch5:		U_sis-fix-build-against-latest-xserver.patch
+Patch6:		U_sis-more-build-fixes-against-master-X-server.patch
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(xorg-macros)

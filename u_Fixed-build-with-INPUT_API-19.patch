@@ -1,0 +1,37 @@
+From 05d3f172983829a0816bf12b1ff13fb54a98f7bd Mon Sep 17 00:00:00 2001
+From: Stefan Dirsch <sndirsch@suse.de>
+Date: Sun, 7 Apr 2013 13:31:21 +0200
+Subject: [PATCH] Fixed build with INPUT_API >= 19
+
+Added dummy parameters to miPointerSetPosition(...) to fix build with
+INPUT_API >=19.
+---
+ src/sis_driver.c |   12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/sis_driver.c b/src/sis_driver.c
+index cefe503..069a82b 100644
+--- a/src/sis_driver.c
++++ b/src/sis_driver.c
+@@ -9378,7 +9378,17 @@ SISMergedPointerMoved(SCRN_ARG_TYPE arg, int x, int y)
+      }
+      if(doit) {
+ 	sigstate = xf86BlockSIGIO();
+-#if GET_ABI_MAJOR(ABI_XINPUT_VERSION) >= 15
++#if GET_ABI_MAJOR(ABI_XINPUT_VERSION) >= 19
++        {
++            double dx = x, dy = y;
++            int nevents;
++            InternalEvent *events;
++            miPointerSetPosition(inputInfo.pointer, Absolute, &dx, &dy,
++				 &nevents, events);
++            x = (int)dx;
++            y = (int)dy;
++        }
++#elif GET_ABI_MAJOR(ABI_XINPUT_VERSION) >= 15
+         {
+             double dx = x, dy = y;
+             miPointerSetPosition(inputInfo.pointer, Absolute, &dx, &dy);
+-- 
+1.7.10.4
+
