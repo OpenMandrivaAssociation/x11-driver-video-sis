@@ -21,7 +21,6 @@ x11-driver-video-sis is the X.org driver for SiS Cards.
 %prep
 %setup -qn xf86-video-sis-%{version}
 %apply_patches
-[ -e autogen.sh ] && ./autogen.sh
 
 %build
 # For reasons currently unknown, X drivers tend to crash Xorg if built with clang
