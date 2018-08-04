@@ -8,6 +8,8 @@ Group:		System/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-video-sis-%{version}.tar.bz2
+Patch0:	0001-Remove-reference-to-virtualFrom.patch
+Patch1:	0002-xf86-video-sis-remove-the-GlxSetVisualConfigs-stub-a.patc
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(xorg-macros)
